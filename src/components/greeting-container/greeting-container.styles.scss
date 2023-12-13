@@ -1,0 +1,21 @@
+.greeting-container {
+    background-image: url("../../assets/mountain.jpg");
+    height: 100%;
+    width: 100%;
+    margin: 5rem;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+.greeting-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.city-selector {
+
+}

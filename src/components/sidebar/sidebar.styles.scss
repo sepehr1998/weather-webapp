@@ -1,7 +1,11 @@
 .side-bar {
+    display: flex;
+    flex-direction: column;
     min-width: fit-content;
     height: 100%;
-    background-image: linear-gradient(to right, rgba(22,44,119, 1), rgba(22,44,119, 0.9), rgba(22,44,119,1));;
+    background-image: linear-gradient(to right, rgba(22,44,119, 1), rgba(22,44,119, 0.9), rgba(22,44,119,1));
+    align-items: center;
+    text-align: center;
 }
 
 .weather-icon {
