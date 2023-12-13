@@ -1,0 +1,13 @@
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: fit-content;
+}
+
+.side-bar {
+  position: absolute;
+  right: 0;
+  top: 0;
+}

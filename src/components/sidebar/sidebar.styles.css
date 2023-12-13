@@ -1,0 +1,20 @@
+.side-bar {
+    min-width: fit-content;
+    height: 100%;
+    background-image: linear-gradient(to right, rgba(22,44,119, 1), rgba(22,44,119, 0.9), rgba(22,44,119,1));;
+}
+
+.weather-icon {
+    min-width: 50%;
+}
+
+.current-temperature {
+    color: white;
+    font-size: 4rem;
+    font-weight: bold;
+}
+
+.current-status {
+    color: white;
+    font-size: 2rem;
+}
