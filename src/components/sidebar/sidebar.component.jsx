@@ -1,46 +1,21 @@
-import { useState, useEffect } from "react";
+import { WeatherContext } from "../../contexts/weather.context";
 import "./sidebar.styles.scss";
-import tokenText from "../utils/token.txt";
+import { useContext } from "react";
 
 const SideBar = () => {
-  const [weatherData, setWeatherData] = useState({});
-  const [apiToken, setApiToken] = useState("");
+  const { weatherData } = useContext(WeatherContext);
 
-  useEffect(() => {
-    fetch(tokenText)
-      .then((r) => r.text())
-      .then((text) => {
-        setApiToken(text);
-        
-        fetchWeatherData(text);
-      });
-  }, []);
-  const fetchWeatherData = (token) => {
-    fetch(
-      `https://api.openweathermap.org/data/2.5/onecall?lat=33.44&lon=-94.04&units=metric&appid=${token}`
-    )
-      .then((res) => res.json())
-      .then((json) => {
-        setWeatherData(json);
-      });
-  };
-
-  const weatherIcon = weatherData?.current
-    ? weatherData.current.weather[0].icon
-    : null;
-  const currentTemperature = weatherData?.current
-    ? Math.round(weatherData.current.temp)
-    : null;
-  const currentStatus = weatherData?.current
-    ? weatherData.current.weather[0].description
-    : null;
-  const logoUrl = `http://openweathermap.org/img/wn/${weatherIcon}@4x.png`;
+  // Set weather details only if weatherData is available and not empty
+  const weatherIcon = weatherData?.weather?.[0]?.icon || null;
+  const currentTemperature = weatherData?.main?.temp ? Math.round(weatherData.main.temp) : null;
+  const currentStatus = weatherData?.weather?.[0]?.description || null;
+  const logoUrl = weatherIcon ? `http://openweathermap.org/img/wn/${weatherIcon}@4x.png` : null;
 
   return (
     <div className="side-bar-container">
-      <img src={logoUrl} className="weather-icon" alt="weather icon" />
-      <div className="current-temperature">{currentTemperature}°C</div>
-      <div className="current-status">{currentStatus}</div>
+      {logoUrl && <img src={logoUrl} className="weather-icon" alt="weather icon" />}
+      {currentTemperature && <div className="current-temperature">{currentTemperature}°C</div>}
+      {currentStatus && <div className="current-status">{currentStatus}</div>}
     </div>
   );
 };

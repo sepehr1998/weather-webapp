@@ -9,7 +9,7 @@ function App() {
         <Greetings />
       </div>
       <div className='side-bar'>
-          <SideBar/>
+        <SideBar/>
       </div>
     </div>
   );
