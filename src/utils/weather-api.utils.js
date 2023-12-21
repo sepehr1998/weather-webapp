@@ -1,5 +1,3 @@
-// utils/weather-api.utils.js
-
 import tokenText from "./token.txt";
 
 export const fetchWeatherData = async () => {

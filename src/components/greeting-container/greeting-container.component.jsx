@@ -37,7 +37,6 @@ const Greetings = () => {
   );
 
   const weatherIcon = weatherData?.weather?.[0]?.icon || null;
-  const currentTemperature = weatherData?.main?.temp ? Math.round(weatherData.main.temp) : null;
   const currentStatus = weatherData?.weather?.[0]?.description || null;
   const logoUrl = weatherIcon ? `http://openweathermap.org/img/wn/${weatherIcon}@4x.png` : null;
 
@@ -85,10 +84,18 @@ const Greetings = () => {
       <div className='time'>
         <CurrentDate />
       </div>
+      <div className='greeting-weather-forecast-container'>
+        <div className='weather-status' >
+        <p>Weather Forecast</p>
+        {currentStatus && <div className="greeting-current-status">
+            <h2>
+              {currentStatus}
+            </h2>
+            </div>}
+        </div>
+          {logoUrl && <img src={logoUrl} className="greeting-weather-icon" alt="weather icon" />}
+      </div>
       <div>
-      {logoUrl && <img src={logoUrl} className="weather-icon" alt="weather icon" />}
-      {currentTemperature && <div className="current-temperature">{currentTemperature}°C</div>}
-      {currentStatus && <div className="current-status">{currentStatus}</div>}
       </div>
     </div>
   );
